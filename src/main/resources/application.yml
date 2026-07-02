@@ -1,0 +1,36 @@
+spring:
+  application:
+    name: job-application-interview-tracker
+  datasource:
+    url: ${DB_URL:jdbc:postgresql://localhost:5432/jobtracker}
+    username: ${DB_USERNAME:jobtracker}
+    password: ${DB_PASSWORD:jobtracker}
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        format_sql: true
+    open-in-view: false
+  mail:
+    host: ${MAIL_HOST:localhost}
+    port: ${MAIL_PORT:1025}
+    username: ${MAIL_USERNAME:}
+    password: ${MAIL_PASSWORD:}
+    properties:
+      mail:
+        smtp:
+          auth: ${MAIL_SMTP_AUTH:false}
+          starttls:
+            enable: ${MAIL_SMTP_STARTTLS:false}
+server:
+  port: ${SERVER_PORT:8080}
+
+app:
+  jwt:
+    secret: ${JWT_SECRET:change-me-in-production-change-me-in-production}
+    expiration-ms: ${JWT_EXPIRATION_MS:86400000}
+  scheduler:
+    reminder-window-minutes: ${REMINDER_WINDOW_MINUTES:60}
+    reminder-lookahead-hours: ${REMINDER_LOOKAHEAD_HOURS:24}
